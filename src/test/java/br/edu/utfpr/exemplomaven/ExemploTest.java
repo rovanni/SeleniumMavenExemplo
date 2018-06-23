@@ -7,7 +7,9 @@ import org.apache.commons.io.FileUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -21,6 +23,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  *
  * @author andreendo
  */
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ExemploTest {
 
     /**
@@ -59,7 +62,7 @@ public class ExemploTest {
     }
 
     @Test
-    public void acessar_site_Ration_01() {
+    public void a_acessar_site_Ration() {
         driver.get("https://ration.io/");
         WebDriverWait wait;
         wait = new WebDriverWait(driver, 10);
@@ -70,7 +73,7 @@ public class ExemploTest {
     }
 
     @Test
-    public void fazer_login_Ration_02() {
+    public void b_fazer_login_Ration() {
         String baseURL = "https://ration.io/login";
         String email = "rovanni@gmail.com";
         String password = "testesw2018";
@@ -90,8 +93,8 @@ public class ExemploTest {
     }
 
     @Test
-    public void convidar_amigo_03() {
-        fazer_login_Ration_02();
+    public void c_convidar_amigo() {
+        b_fazer_login_Ration();
         String nome = "Luciano 01";
         String email = "rovanni@gmail.com";
 
@@ -116,8 +119,8 @@ public class ExemploTest {
     }
 
     @Test
-    public void confirmar_pedido_amizade_04() {
-        fazer_login_Ration_02();
+    public void d_confirmar_pedido_amizade() {
+        b_fazer_login_Ration();
 
         driver.get("https://ration.io/friends");
 
@@ -131,8 +134,8 @@ public class ExemploTest {
     }
 
     @Test
-    public void remover_amigo_05() {
-        fazer_login_Ration_02();
+    public void e_remover_amigo() {
+        b_fazer_login_Ration();
         driver.get("https://ration.io/friends");
         WebDriverWait wait;
         wait = new WebDriverWait(driver, 10);
@@ -145,7 +148,6 @@ public class ExemploTest {
 
         takeScreenShot();
     }
- 
 
     private void takeScreenShot() {
         File sourceFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
